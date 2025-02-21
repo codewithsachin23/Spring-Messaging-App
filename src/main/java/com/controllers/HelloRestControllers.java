@@ -1,9 +1,7 @@
 package com.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.model.UserDTO;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class HelloRestControllers {
@@ -18,5 +16,11 @@ public class HelloRestControllers {
     @GetMapping("Hello/{name}")
     public String hello3(@PathVariable String name) {
         return "Hello "+ name +" from BridgeLab";
+    }
+
+    @PostMapping("/post")
+    public String hello4(@RequestBody UserDTO user) {
+        return "Hello "+ user.getFirstName() + " " + user.getLastName() +" from BridgeLab";
+
     }
 }
